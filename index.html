@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylee.css">
+    <title>Program Sistem Pendukung Keputusan - Penetuan Jurusan SMA</title>
+</head>
+<body>
+    <h1>Program Sistem Pendukung Keputusan - Penetuan Jurusan SMA</h1>
+    <form>
+        <h3><u>BOBOT KRITERIA</u></h3>
+        <label for="bobot-un">Bobot Nilai UN:</label>
+        <input type="number" id="bobot-un" name="bobot-un" /><br />
+
+        <label for="bobot-us-ipa">Bobot Nilai US IPA:</label>
+        <input type="number" id="bobot-us-ipa" name="bobot-us-ipa" /><br />
+
+        <label for="bobot-us-ips">Bobot Nilai US IPS:</label>
+        <input type="number" id="bobot-us-ips" name="bobot-us-ips" /><br />
+
+        <label for="bobot-nilai-tes">Bobot Nilai Tes:</label>
+        <input type="number" id="bobot-nilai-tes" name="bobot-nilai-tes" /><br />
+
+        <h3><u>ALTERNATIF 1</u></h3>
+        <label for="un1">Nilai UN:</label>
+        <input type="number" id="un1" name="un1" /><br />
+
+        <label for="us-ipa1">Nilai US IPA:</label>
+        <input type="number" id="us-ipa1" name="us-ipa1" /><br />
+
+        <label for="us-ips1">Nilai US IPS:</label>
+        <input type="number" id="us-ips1" name="us-ips1" /><br />
+
+        <label for="nilai-tes1">Nilai Tes:</label>
+        <input type="number" id="nilai-tes1" name="nilai-tes1" /><br />
+
+        <h3><u>ALTERNATIF 2</u></h3>
+        <label for="un2">Nilai UN:</label>
+        <input type="number" id="un2" name="un2" /><br />
+
+        <label for="us-ipa2">Nilai US IPA:</label>
+        <input type="number" id="us-ipa2" name="us-ipa2" /><br />
+
+        <label for="us-ips2">Nilai US IPS:</label>
+        <input type="number" id="us-ips2" name="us-ips2" /><br />
+
+        <label for="nilai-tes2">Nilai Tes:</label>
+        <input type="number" id="nilai-tes2" name="nilai-tes2" /><br />
+
+        <h3><u>ALTERNATIF 3</u></h3>
+        <label for="un3">Nilai UN:</label>
+        <input type="number" id="un3" name="un3" /><br />
+
+        <label for="us-ipa3">Nilai US IPA:</label>
+        <input type="number" id="us-ipa3" name="us-ipa3" /><br />
+
+        <label for="us-ips3">Nilai US IPS:</label>
+        <input type="number" id="us-ips3" name="us-ips3" /><br />
+
+        <label for="nilai-tes3">Nilai Tes:</label>
+        <input type="number" id="nilai-tes3" name="nilai-tes3" /><br />
+        <button type="submit" id="submit-btn">Hitung</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        const form = document.querySelector("form");
+        const result = document.getElementById("result");
+  
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+  
+          // Dapatkan nilai dari form
+          const bobotUn = parseInt(document.getElementById("bobot-un").value);
+          const bobotUsIpa = parseInt(document.getElementById("bobot-us-ipa").value);
+          const bobotUsIps = parseInt(document.getElementById("bobot-us-ips").value);
+          const bobotNilaiTes = parseInt(document.getElementById("bobot-nilai-tes").value);
+          const un1 = parseInt(document.getElementById("un1").value);
+          const usIpa1 = parseInt(document.getElementById("us-ipa1").value);
+          const usIps1 = parseInt(document.getElementById("us-ips1").value);
+          const nilaiTes1 = parseInt(document.getElementById("nilai-tes1").value);
+          const un2 = parseInt(document.getElementById("un2").value);
+          const usIpa2 = parseInt(document.getElementById("us-ipa2").value);
+          const usIps2 = parseInt(document.getElementById("us-ips2").value);
+          const nilaiTes2 = parseInt(document.getElementById("nilai-tes2").value);
+          const un3 = parseInt(document.getElementById("un3").value);
+          const usIpa3 = parseInt(document.getElementById("us-ipa3").value);
+          const usIps3 = parseInt(document.getElementById("us-ips3").value);
+          const nilaiTes3 = parseInt(document.getElementById("nilai-tes3").value);
+  
+          // Hitung total bobot
+          const totalBobot = bobotUn + bobotUsIpa + bobotUsIps + bobotNilaiTes;
+  
+          // Normalisasi bobot
+          const normBobotUn = bobotUn / totalBobot;
+          const normBobotUsIpa = bobotUsIpa / totalBobot;
+          const normBobotUsIps = bobotUsIps / totalBobot;
+          const normBobotNilaiTes = bobotNilaiTes / totalBobot;
+  
+          // Hitung vektor s untuk IPA dan IPS
+          const vektorSIpa1 = 
+          Math.pow(un1, normBobotUn) * Math.pow(usIpa1, normBobotUsIpa) * Math.pow(nilaiTes1, normBobotNilaiTes);
+          const vektorSIps1 =
+          Math.pow(un1, normBobotUn) * Math.pow(usIps1, normBobotUsIps) * Math.pow(nilaiTes1, normBobotNilaiTes);
+          const vektorSIpa2 = 
+          Math.pow(un2, normBobotUn) * Math.pow(usIpa2, normBobotUsIpa) * Math.pow(nilaiTes2, normBobotNilaiTes);
+          const vektorSIps2 =
+          Math.pow(un2, normBobotUn) * Math.pow(usIps2, normBobotUsIps) * Math.pow(nilaiTes2, normBobotNilaiTes);
+          const vektorSIpa3 = 
+          Math.pow(un3, normBobotUn) * Math.pow(usIpa3, normBobotUsIpa) * Math.pow(nilaiTes3, normBobotNilaiTes);
+          const vektorSIps3 =
+          Math.pow(un1, normBobotUn) * Math.pow(usIps3, normBobotUsIps) * Math.pow(nilaiTes3, normBobotNilaiTes);
+          
+          // Hitung vektor s untuk IPA dan IPS
+          const vektorVIpa1 = vektorSIpa1 / (vektorSIpa1 + vektorSIpa1);
+          const vektorVIps1 = vektorSIps1 / (vektorSIpa1 + vektorSIpa1);
+          const vektorVIpa2 = vektorSIpa2 / (vektorSIpa2 + vektorSIpa2);
+          const vektorVIps2 = vektorSIps2 / (vektorSIpa2 + vektorSIpa2);
+          const vektorVIpa3 = vektorSIpa3 / (vektorSIpa3 + vektorSIpa3);
+          const vektorVIps3 = vektorSIps3 / (vektorSIpa3 + vektorSIpa3);
+
+          // Tentukan hasil
+          let hasil1;
+          if (vektorVIpa1 > vektorVIps1) {
+          hasil1 = "IPA";
+          } else {
+          hasil1 = "IPS";
+          }
+
+          let hasil2;
+          if (vektorVIpa2 > vektorVIps2) {
+          hasil2 = "IPA";
+          } else {
+          hasil2 = "IPS";
+          }
+
+          let hasil3;
+          if (vektorVIpa3 > vektorVIps3) {
+          hasil3 = "IPA";
+          } else {
+          hasil3 = "IPS";
+          }
+  
+          // Tampilkan hasil
+          result.innerHTML = `
+          <p>Normalisasi bobot:</p>
+          <ul>
+              <li>Nilai UN: ${normBobotUn.toFixed(2)}</li>
+              <li>Nilai US IPA: ${normBobotUsIpa.toFixed(2)}</li>
+              <li>Nilai US IPS: ${normBobotUsIps.toFixed(2)}</li>
+              <li>Nilai Tes: ${normBobotNilaiTes.toFixed(2)}</li>
+          </ul>
+          <p>VEKTOR S ALTERNATIF 1:</p>
+          <ul>
+              <li>IPA: ${vektorSIpa1.toFixed(2)}</li>
+              <li>IPS: ${vektorSIps1.toFixed(2)}</li>
+          </ul>
+          <p>VEKTOR V ALTERNATIF 1:</p>
+          <ul>
+              <li>IPA: ${vektorVIpa1.toFixed(5)}</li>
+              <li>IPS: ${vektorVIps1.toFixed(5)}</li>
+          </ul>
+          <p>JURUSAN TERBAIK ALTERNATIF 1: ${hasil1}</p>
+          <p>VEKTOR S ALTERNATIF 2:</p>
+          <ul>
+              <li>IPA: ${vektorSIpa2.toFixed(2)}</li>
+              <li>IPS: ${vektorSIps2.toFixed(2)}</li>
+          </ul>
+          <p>VEKTOR V ALTERNATIF 2:</p>
+          <ul>
+              <li>IPA: ${vektorVIpa2.toFixed(5)}</li>
+              <li>IPS: ${vektorVIps2.toFixed(5)}</li>
+          </ul>
+          <p>JURUSAN TERBAIK ALTERNATIF 2: ${hasil2}</p>
+          <p>VEKTOR S ALTERNATIF 3:</p>
+          <ul>
+              <li>IPA: ${vektorSIpa3.toFixed(2)}</li>
+              <li>IPS: ${vektorSIps3.toFixed(2)}</li>
+          </ul>
+          <p>VEKTOR V ALTERNATIF 3:</p>
+          <ul>
+              <li>IPA: ${vektorVIpa3.toFixed(5)}</li>
+              <li>IPS: ${vektorVIps3.toFixed(5)}</li>
+          </ul>
+          <p>JURUSAN TERBAIK ALTERNATIF 3: ${hasil3}</p>
+          `;
+        });
+          </script>
+    </body>
+</html>

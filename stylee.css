@@ -1,0 +1,86 @@
+/* Style untuk body */
+body {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Style untuk container */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+/* Style untuk judul */
+h1 {
+  text-align: center;
+  color: #555;
+}
+
+/* Style untuk form */
+form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style untuk label */
+label {
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Style untuk input */
+input[type="number"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+/* Style untuk tombol */
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+/* Style untuk hasil */
+#result {
+  margin-top: 20px;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+#result p {
+  margin-bottom: 10px;
+  color: #555;
+  font-weight: bold;
+}
+
+#result ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#result li {
+  margin-bottom: 5px;
+  color: #333;
+}
